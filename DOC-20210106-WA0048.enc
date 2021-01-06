@@ -1,0 +1,603 @@
+/*
+My Name: zeinab salah abdalkreem mohmed
+Class: Second Year
+Department: Computer Engineering
+*/
+#include <iostream>  
+#include <cstring>
+#include <cstdlib>
+#include <cstdio>
+#include <cctype>
+#include <ctime>
+#include <iomanip>
+
+#define max 20         //يتم استبدال كل كلمة ماكس في الكود بقيمة 20 لتوفير الذاكره في الثوابت
+using namespace std;
+struct contacts
+
+{
+
+ char firstname;
+
+ char familyname;
+
+ char gender;
+
+ char email;
+
+ int phonenumer;
+
+};
+
+int num;
+
+contacts cont[max],conn[max],sortcon[max],sortconn1[max];
+
+int main()
+{
+    
+ {
+
+ system("clear");
+
+ void menu();             //قائمه
+
+ void build();  //اضافة عدد من سجلات الاتصال 
+
+ void list();   //طباعة كافة سجلات الاتصاال 
+
+ void insert();  //اضافة سجل جهة اتصال واحده 
+
+ void deletes();  //حذف سجل معين من سجلاات الاتصاال 
+
+ void edit();       //تعديل سجلاات الاتصااال
+
+ void search();       //البحث عن سجل جهة اتصاال واحده
+
+ void sort();           //فرز او ترتيب 
+
+ 
+
+ char option;
+
+ menu();
+
+ while((option=cin.get())!='e')
+
+ {
+
+  switch(option)
+
+  {
+
+   case '1':
+
+         build();
+
+         break;
+
+   case '2':
+
+         list();
+
+         break;
+
+   case '3':
+
+         insert();
+
+         break;
+
+   case '4':
+
+         deletes();
+
+         break;
+
+   case '5':
+
+       edit();
+
+        break;
+
+   case '6':
+
+        search();
+
+        break;
+
+   case '7':
+
+         sort();
+
+         break;
+
+  }
+
+   menu();
+
+  }
+return 0;
+}
+
+ {
+
+  system("clear");  //مسح شاشة البرناامج
+
+
+cout<<"          ";
+printf("\n*****  contacts Management System 1.0 ***** ");
+
+cout<<endl;
+cout<<"             ";
+
+cout<<"\n\t\t Press  1---->Insert Many Records Of contacts  ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  2---->Print List Of The contacts  Records  ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  3---->Insert New  contact       ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  4---->Delete A contact Record         ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  5---->Edit A contact Record           ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  6---->Search for  contact        ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  7---->Sort The List Of  contact         ";
+cout<<"             ";
+
+cout<<"\n\t\t Press  e---------->Exit Program              ";
+cout<<"             ";
+
+cout<<"\n\n \t\t Select Your Option Please ====> ";
+
+}
+//دالة اضافة عدد من السجلاات
+//void build()
+
+{
+
+
+ system("clear");
+
+ printf("Build The Table");
+
+ cout<<endl;
+
+ //عدد السجلات التي تريد ادخالها
+ cout<<"maximum number of entries  -----  >  50"<<endl;//الحد الاقصى لعدد الادخالات
+
+ cout<<"how many do you want    ----->"; //كم عدد السجلات التي تريدهاا
+
+ cin>>num;
+
+ cout<<"Enter The Following Items"<<endl; //ادخل العناصر التاليه
+
+ for(int i=0;i<=num-1;i++)
+
+ {
+
+  cout<<"first Name  ";
+
+  cin>>cont[i].firstname;
+
+  cout<<" familyname";
+
+  cin>>cont[i].familyname;
+
+  cout<<"gender ";
+
+  cin>>cont[i].gender;
+
+  cout<<"email ";
+
+  cin>>cont[i].email;
+
+  cout<<"phonenumer  ";
+
+  cin>>cont[i].phonenumer;
+
+ }
+
+  cout<<"going to main menu";
+
+ Sleep(500);
+
+}
+//دالة طباعة كافة سجلات جهاات الاتصااال 
+//void  list()
+
+{
+
+ system("clear");
+
+ printf("       ********List The Table********");
+
+ cout<<endl;
+
+ cout<<"    first Name    familyname    gender    email    phonenumer "<<endl;
+
+ cout<<"    ------------------------------------------------------"<<endl;
+
+ for(int i=0;i<=num-1;i++)
+
+ {
+
+  cout<<setw(8)<<cont[i].firstname ;
+
+  cout<<setw(6)<<cont[i].familyname;
+
+  cout<<setw(10)<<cont[i].gender;
+
+  cout<<setw(15)<<cont[i].email;
+
+  cout<<setw(15)<<cont[i].phonenumer;
+
+  cout<<endl;
+
+ }
+
+  cout<<"going to main menu";
+
+ getch();
+ //الدالة getche() ] اختصار لـــ get character, echo 
+ //معناها أنها (تأخذ get ) محارف character من لوحة المفاتيح
+ //وتظهرها علي الشاشة ]
+ // () بدون الحرف e لإدخال المحارف ولكن لا تظهرها علي الشاشة [
+  }
+}
+
+//دالة اضافة جهة اتصال واحده 
+  //void insert()
+
+  {
+
+  system("clear");
+
+  int i=num;
+
+  num+=1;
+
+  printf("Insert New Record");
+
+  cout<<endl;
+
+  cout<<"Enter The Following Items"<<endl;
+
+  cout<<"firstname ";
+
+  cin>>cont[i].firstname;
+
+  cout<<"familyname ";
+
+  cin>>cont[i].familyname;
+
+  cout<<" gender ";
+
+  cin>>cont[i].gender;
+
+  cout<<" email";
+
+  cin>>cont[i].email;
+
+  cout<<" phonenumer ";
+
+  cin>>cont[i].phonenumer;
+
+  cout<<endl<<endl;
+
+  cout<<"going to main menu";
+
+ Sleep(500);
+  }
+  //دالة حذف سجل جهة اتصااال
+  //void deletes()
+
+  {
+
+   system("clear");
+
+   char firstname;
+
+   int check;
+
+   printf("Delete An Entry");
+
+   cout<<endl;
+
+   cout<<"Enter A firstname To Delete That Entry  ";
+
+   cin>>firstname;
+
+   int i;
+
+   for(i=0;i<=num-1;i++)
+
+   {
+
+    if(firstname==firstname)
+
+    {
+
+      check=i;
+
+    }
+
+   }
+
+   for(i=0;i<=num-1;i++)
+
+   {
+    if(i==check)
+    {
+
+    continue;
+
+    }
+
+    else
+
+    {
+
+    if(i>check)
+
+    {
+     conn[i-1]=cont[i];
+    }
+
+    else
+
+    {
+     conn[i]=cont[i];
+    }
+
+     }
+
+   }
+
+  num--;
+
+
+  for(i=0;i<=num-1;i++)
+
+  {
+   cont[i]=conn[i];
+  }
+
+ }
+
+//دالة تعديل سجلااات جهاات الاتصاال
+//void edit()
+
+{
+
+ system("clear");
+
+ int jobfirstname;
+
+
+ printf("          Edit An Entry           ");
+
+ cout<<endl;
+
+ int i;
+
+ void editmenu();
+
+ void editfirstname(int);
+
+ void editfamilyname(int);
+
+ void editgender(int);
+
+ void editemail(int);
+
+ void editphonenumer(int);
+
+ char option;
+
+
+ cout<<"Enter An jobirstname To Edit An Entry----  ";
+
+ cin>>jobfirstname;
+
+  editmenu();
+
+ for(i=0;i<=num-1;i++)
+
+   {
+
+    if(jobfirstname==jobfirstname)
+
+    {
+
+
+while((option=cin.get())!='q')
+
+{
+
+      switch(option)
+
+      {
+
+       case 'f':
+
+            editfirstname(i);
+
+            break;
+
+       case 'a':
+
+            editfamilyname(i);
+
+            break;
+
+       case 'g':
+
+            editgender(i);
+
+            break;
+
+       case 'e':
+
+            editemail(i);
+
+            break;
+
+       case 'p':
+
+           editphonenumer(i);
+
+           break;
+
+     }
+
+   editmenu();
+
+    }
+
+  }
+
+  }
+
+  }
+
+  void editmenu()
+
+  {
+
+   system("clear");
+
+   cout<<"        What Do You Want To edit";
+
+   cout<<"          f--------->firstname ";
+
+   cout<<"          a---------> familyname";
+
+   cout<<"          g--------->gender";
+
+   cout<<"          e--------->email ";
+
+   cout<<"          p---------> phonenumer       ";
+
+   cout<<"              q----->QUIT                            ";
+
+   cout<<"   Options Please ---->>>  ";  //خياراات 
+
+  }
+
+  void editfirstname(int i)
+
+  {
+
+     cout<<"Enter New firstName----->  ";
+
+     cin>>cont[i].firstname;
+
+  }
+
+  void editfamilyname(int i)
+
+  {
+
+   cout<<"Enter New familyname----->  ";
+   
+
+   cin>>cont[i].familyname;
+
+  }
+
+  void editgender(int i)
+
+  {
+
+   cout<<"enter new gender----->  ";
+
+   cin>>cont[i].gender;
+
+  }
+
+  void editemail(int i)
+
+  {
+
+   cout<<"Enter new email";
+
+   cin>>cont[i].email;
+
+  }
+
+  void editphonenumer(int i)
+
+  {
+
+   cout<<"Enter new phonenumer ";
+
+   cin>>cont[i].phonenumer;
+  }
+
+// داله البحث عن سجل جهة اتصاال
+void search()
+
+{
+
+ system("clear");
+
+
+  printf("Welcome To Search Of contacts Database ");
+
+
+
+  cout<<endl;
+
+  int jobName;
+
+  cout<<"You Can Search Only By firstName Of A contacts";
+
+  cout<<"Enter firstName Of  A contacts            ";
+
+ cin>>jobName;
+
+ for(int i=0;i<=num-1;i++)
+
+   {
+
+    if(cont[i].firstname==jobName)
+
+    {
+
+
+    cout<<"     firstName     familyname    gender   email   phonenumer ";
+
+ cout<<"     ------------------------------------------------------                                  ";
+
+  cout<<setw(10)<<cont[i].firstname;
+
+  cout<<setw(6)<<cont[i].familyname;
+
+  cout<<setw(10)<<cont[i].gender;
+
+  cout<<setw(10)<<cont[i].email;
+
+  cout<<setw(15)<<cont[i].phonenumer;
+
+  cout<<endl;
+
+ }
+
+
+  }
+
+    cout<<"going to main menu";
+
+ getch();
+
+
+
+}
